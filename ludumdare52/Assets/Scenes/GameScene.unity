@@ -355,8 +355,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722d3377744774193917d42b5a5b4369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 0
+  maxHealth: 0
+  currentHealth: 0
 --- !u!1 &538873283
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,13 +1359,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8834abafa51444220b5b1288b4282824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBtwAttack: 1
-  startTimeBtwAttack: 0
-  attackPos: {fileID: 608298454}
-  whatIsEnemies:
-    serializedVersion: 2
-    m_Bits: 0
+  anim: {fileID: 0}
+  attackPoint: {fileID: 608298454}
   attackRange: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
   damage: 10
 --- !u!1 &1845798239
 GameObject:

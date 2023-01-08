@@ -5,24 +5,28 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health;
-    public float speed;
+    public int maxHealth;
+    public int currentHealth; 
 
     private Animator anim;
 
     private void Start()
     {
-        //blabla
+        currentHealth = maxHealth;
     }
-
-    private void Update()
-    {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
-    }
+    
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("Damage");
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        
     }
 }
