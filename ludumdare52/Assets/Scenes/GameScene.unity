@@ -412,7 +412,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608298453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.512, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1254,7 +1254,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -338246270, guid: e209fcccdd41a46ef81cfcedeacb00c4, type: 3}
+  m_Sprite: {fileID: -142115499, guid: 3fbc5d506e7b547c1b3d4bdf88804324, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1328,6 +1328,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  attackPoint: {fileID: 0}
 --- !u!50 &1681701343
 Rigidbody2D:
   serializedVersion: 4
@@ -1368,7 +1369,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damage: 10
-  attackRate: 0
+  attackRate: 2
 --- !u!95 &1681701345
 Animator:
   serializedVersion: 4

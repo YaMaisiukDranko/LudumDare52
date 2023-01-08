@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
@@ -14,6 +10,12 @@ public class PlayerAttacks : MonoBehaviour
     public int damage;
     public float attackRate;
     private float nextAttackTime;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     public void Update()
     {
@@ -21,6 +23,7 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                rb.AddForce(transform.forward * 5000);
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
@@ -30,7 +33,6 @@ public class PlayerAttacks : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("Attack");
-
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayer);
         foreach (Collider2D enemy in hitEnemies)
         {

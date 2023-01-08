@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e209fcccdd41a46ef81cfcedeacb00c4
+guid: 3fbc5d506e7b547c1b3d4bdf88804324
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FarmerIdle_0
+      name: FarmerIdle 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01687b692442e4c5b988df2ef3cd8384
-      internalID: -338246270
+      spriteID: 0d3acc347b9664158bd2f7202365431a
+      internalID: -142115499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FarmerIdle_1
+      name: FarmerIdle 1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1424c6d3abf0b45838f6f1640bb0beb9
-      internalID: 1346213336
+      spriteID: e88e51651b49e466fa48674671e4d142
+      internalID: -217074317
       vertices: []
       indices: 
       edges: []
@@ -180,8 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FarmerIdle_0: -338246270
-      FarmerIdle_1: 1346213336
+      FarmerIdle 1_1: -217074317
+      FarmerIdle 1_0: -142115499
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -12,9 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpingPower;
     private bool isFacingRight = true;
 
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform attackPoint;
 
     private void Update()
     {
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     void Flip() // flip player
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
+        { 
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed81121056c424e38b7c614a20b31ab2
+guid: fa5a13100d42947d89886533e66b6491
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FarmerWalk_0
+      name: FarmerWalk 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39dd2ce15da7b4dfd899570f94ccbd1b
-      internalID: -1239558142
+      spriteID: 22171d1edc00f4fa8aedf9cfd4cf2170
+      internalID: 1030035722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FarmerWalk_1
+      name: FarmerWalk 1_1
       rect:
         serializedVersion: 2
         x: 16
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad170a37db1b64c729283995d8edd43c
-      internalID: -707486160
+      spriteID: 3f72631e7869f43ccbee7b39ee1a24ce
+      internalID: -315277230
       vertices: []
       indices: 
       edges: []
@@ -180,8 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FarmerWalk_1: -707486160
-      FarmerWalk_0: -1239558142
+      FarmerWalk 1_1: -315277230
+      FarmerWalk 1_0: 1030035722
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
