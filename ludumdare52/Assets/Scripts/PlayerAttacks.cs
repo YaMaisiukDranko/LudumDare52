@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
@@ -23,7 +24,7 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                rb.AddForce(transform.forward * 5000);
+                rb.AddForce(new Vector2(5f, 0f));
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }

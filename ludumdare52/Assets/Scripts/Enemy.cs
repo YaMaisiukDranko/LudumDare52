@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     public int maxHealth;
-    public int currentHealth; 
+    [SerializeField] private int currentHealth; 
 
     private Animator anim;
 
@@ -14,7 +15,6 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    
 
     public void TakeDamage(int damage)
     {
