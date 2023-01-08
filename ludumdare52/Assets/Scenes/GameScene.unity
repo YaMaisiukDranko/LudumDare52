@@ -1254,7 +1254,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -338246270, guid: e209fcccdd41a46ef81cfcedeacb00c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1320,6 +1320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc9d5faeb5b545a9b40d585d43a252d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1681701345}
   speed: 8
   jumpingPower: 20
   rb: {fileID: 1681701343}
@@ -1360,7 +1361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8834abafa51444220b5b1288b4282824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1681701345}
   attackPoint: {fileID: 608298454}
   attackRange: 1
   enemyLayer:

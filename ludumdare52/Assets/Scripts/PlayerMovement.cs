@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator anim;
+    
     private float horizontal;
     public float speed;
     public float jumpingPower;
@@ -16,16 +18,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal"); // get horizontal input
+        if (rb.velocity.x != 0)
+        {
+            anim.SetTrigger("Walk");
+        }
+        else
+        {
+            anim.SetTrigger("Idle");
+        }
+            horizontal = Input.GetAxisRaw("Horizontal"); // get horizontal input
 
-        if (Input.GetButtonDown("Jump") && isGrounded())
+       /* if (Input.GetButtonDown("Jump") && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
         if (Input.GetButtonDown("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+        }*/
         
         Flip();
     }
