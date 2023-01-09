@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public float stoppingDistance;
     private Transform target;
+    public bool move;
 
     private void Start()
     {
@@ -18,7 +19,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
         {
+            move = true;
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
+        else 
+            move = false;
+        
     }
 }
