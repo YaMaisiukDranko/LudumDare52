@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     
     public float attackRate;
     private float nextAttackTime;
-    private float attackRange;
+    public float attackRange;
     public int damage;
 
     public Transform attackPoint;
@@ -27,16 +27,14 @@ public class EnemyAttack : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
-    }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("PlayerBorder"))
+        if (Time.time >= nextAttackTime)
         {
-            if (Time.time >= nextAttackTime)
+            Collider2D other = GetComponent<Collider2D>();
+            if (other.CompareTag("PlayerBorder"))
             {
                 Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                nextAttackTime = Time.time + 2f / attackRate;
             }
         }
     }
@@ -47,6 +45,11 @@ public class EnemyAttack : MonoBehaviour
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
         target.gameObject.GetComponent<Player>().TakeDamage(damage);
         Debug.Log("Hit Player");
-        
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
