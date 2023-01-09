@@ -10,6 +10,10 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     public bool move;
 
+    private bool isFacingRight;
+    public float horizontal;
+    
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -24,6 +28,18 @@ public class EnemyMovement : MonoBehaviour
         }
         else 
             move = false;
-        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        horizontal = rb.velocity.x;
+        Flip();
+    }
+
+    void Flip()
+    {
+        // Flip the sprite if the player is changing direction
+        if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
+        {
+            isFacingRight = !isFacingRight;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
     }
 }
