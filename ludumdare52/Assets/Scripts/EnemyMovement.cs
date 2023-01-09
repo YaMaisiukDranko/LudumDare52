@@ -11,12 +11,14 @@ public class EnemyMovement : MonoBehaviour
     public bool move;
 
     private bool isFacingRight;
-    public float horizontal;
-    
+    public SpriteRenderer sr;
+    private Vector2 previousPosition;
+    int movement = 0;
 
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        previousPosition = transform.position;
     }
 
     private void Update()
@@ -28,18 +30,39 @@ public class EnemyMovement : MonoBehaviour
         }
         else 
             move = false;
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        horizontal = rb.velocity.x;
+
+        
+        // Get the current position and elapsed time
+        Vector2 currentPosition = transform.position;
+        float elapsedTime = Time.deltaTime;
+
+        // Calculate the movement direction along the x-axis
+        if (currentPosition.x > previousPosition.x)
+        {
+            movement = 1;
+        }
+        else if (currentPosition.x < previousPosition.x)
+        {
+            movement = -1;
+        }
+
+        // If the x direction is not zero, print it to the console
+        if (movement != 0)
+        {
+            Debug.Log("Movement direction: " + movement);
+        }
+
+        // Set the previous position to the current position
+        previousPosition = currentPosition;
         Flip();
     }
 
     void Flip()
     {
-        // Flip the sprite if the player is changing direction
-        if ((isFacingRight && horizontal < 0f) || (!isFacingRight && horizontal > 0f))
+        if ((movement < 0 && sr.flipX) || (movement > 0 && !sr.flipX))
         {
-            isFacingRight = !isFacingRight;
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            sr.flipX = !sr.flipX;
         }
     }
+     
 }
