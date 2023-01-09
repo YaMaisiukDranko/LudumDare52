@@ -1,36 +1,46 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public EnemyMovement EnemyMoveScript;
-    public GameObject player;
-    public int damage;
+    public float attackDelay = 2.0f; // delay between attacks in seconds
+    public float attackDamage = 10.0f; // amount of damage dealt by each attack
 
-    private void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        EnemyMoveScript = GetComponent<EnemyMovement>();
-    }
+    private float attackTimer = 0.0f; // timer for counting down to next attack
+    private bool canAttack = false; // whether the enemy is able to attack
 
-    private void OnTriggerEnter2D(Collider2D trig)
+    // Update is called once per frame
+    void Update()
     {
-        //trig = player.GetComponentInChildren<BoxCollider2D>();
-        while (!EnemyMoveScript.move && trig.CompareTag("Player"))
+        attackTimer -= Time.deltaTime; // decrease attack timer
+
+        if (canAttack && attackTimer <= 0.0f) // if timer is up and enemy can attack
         {
-            StartCoroutine(AttackTimer());
+            Attack(); // attack
+            attackTimer = attackDelay; // reset timer
         }
     }
 
-    IEnumerator AttackTimer()
+    void Attack()
     {
-        yield return new WaitForSeconds(1);
-        Debug.Log("Attack player");
-        player.GetComponent<Player>().TakeDamage(damage);
-        yield return new WaitForSeconds(1);
+        Debug.Log("Attack");
     }
 
+    // called when the enemy's collider enters a trigger collider
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player") // if the trigger collider is the player
+        {
+            canAttack = true; // enable attacking
+        }
+    }
 
+    // called when the enemy's collider exits a trigger collider
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player") // if the trigger collider is the player
+        {
+            canAttack = false; // disable attacking
+        }
+    }
 }
