@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95c3a5d80815f438cbf12f29b0fdcc1c
+guid: 4088143b6add444e38a36113f5ee5df9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PurpleEnemyWalk_0
+      name: NicrophorusAttack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ee6326dae6104e80996eaa1024f8142
-      internalID: -1939101303
+      spriteID: fba8dc86ff7f446a992c7bc1fa92cb66
+      internalID: -1956752082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleEnemyWalk_1
+      name: NicrophorusAttack_1
       rect:
         serializedVersion: 2
         x: 16
@@ -163,29 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e12cc6afc7fe249a7a2cc80b695249f5
-      internalID: -1345959673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PurpleEnemyWalk_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 493828f40a4fa48cf800d83299703b43
-      internalID: 445486982
+      spriteID: b7f1fbca506b14e19b040f54dbc49176
+      internalID: 629855602
       vertices: []
       indices: 
       edges: []
@@ -201,9 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PurpleEnemyWalk_1: -1345959673
-      PurpleEnemyWalk_2: 445486982
-      PurpleEnemyWalk_0: -1939101303
+      NicrophorusAttack_0: -1956752082
+      NicrophorusAttack_1: 629855602
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

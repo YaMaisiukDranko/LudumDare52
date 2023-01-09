@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95c3a5d80815f438cbf12f29b0fdcc1c
+guid: 7c8893bd1e33a4549a65485de5277c6e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PurpleEnemyWalk_0
+      name: NicrophorusWalk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ee6326dae6104e80996eaa1024f8142
-      internalID: -1939101303
+      spriteID: 021d3b919e39343efa4e74c23277431a
+      internalID: 1692144625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PurpleEnemyWalk_1
+      name: NicrophorusWalk_1
       rect:
         serializedVersion: 2
         x: 16
@@ -163,29 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e12cc6afc7fe249a7a2cc80b695249f5
-      internalID: -1345959673
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PurpleEnemyWalk_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 493828f40a4fa48cf800d83299703b43
-      internalID: 445486982
+      spriteID: 6ab906f6674a34381854ca7c5e7f94ca
+      internalID: -1727775488
       vertices: []
       indices: 
       edges: []
@@ -201,9 +180,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PurpleEnemyWalk_1: -1345959673
-      PurpleEnemyWalk_2: 445486982
-      PurpleEnemyWalk_0: -1939101303
+      NicrophorusWalk_1: -1727775488
+      NicrophorusWalk_0: 1692144625
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
