@@ -1,55 +1,142 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
-{
-    public Animator anim;
-    public float speed;
-    public float stoppingDistance;
-    private Transform target;
-    
-    public float attackRate;
-    private float nextAttackTime;
-    public float attackRange;
-    public int damage;
+public class EnemyAttack : MonoBehaviour {
 
-    public Transform attackPoint;
-    public LayerMask playerLayer;
+    #region Public Variables
+    public Transform rayCast;
+    public LayerMask raycastMask;
+    public float rayCastLength;
+    public float attackDistance; //Minimum distance for attack
+    public float moveSpeed;
+    public float timer; //Timer for cooldown between attacks
+    #endregion
 
+    #region Private Variables
+    private RaycastHit2D hit;
+    private GameObject target;
+    private Animator anim;
+    private float distance; //Store the distance b/w enemy and player
+    private bool attackMode;
+    private bool inRange; //Check if Player is in range
+    private bool cooling; //Check if Enemy is cooling after attack
+    private float intTimer;
+    #endregion
 
-    private void Start()
+    void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        intTimer = timer; //Store the inital value of timer
+        anim = GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+    void Update () {
+        if (inRange)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            hit = Physics2D.Raycast(rayCast.position, Vector2.left, rayCastLength, raycastMask);
+            RaycastDebugger();
         }
 
-        if (Time.time >= nextAttackTime)
+        //When Player is detected
+        if(hit.collider != null)
         {
-            Collider2D other = GetComponent<Collider2D>();
-            if (other.CompareTag("PlayerBorder"))
-            {
-                Attack();
-                nextAttackTime = Time.time + 2f / attackRate;
-            }
+            EnemyLogic();
+        }
+        else if(hit.collider == null)
+        {
+            inRange = false;
+        }
+
+        if(inRange == false)
+        {
+            anim.SetBool("canWalk", false);
+            StopAttack();
+        }
+	}
+
+    void OnTriggerEnter2D(Collider2D trig)
+    {
+        if(trig.gameObject.tag == "Player")
+        {
+            target = trig.gameObject;
+            inRange = true;
+        }
+    }
+
+    void EnemyLogic()
+    {
+        distance = Vector2.Distance(transform.position, target.transform.position);
+
+        if(distance > attackDistance)
+        {
+            Move();
+            StopAttack();
+        }
+        else if(attackDistance >= distance && cooling == false)
+        {
+            Attack();
+        }
+
+        if (cooling)
+        {
+            Cooldown();
+            anim.SetBool("Attack", false);
+        }
+    }
+
+    void Move()
+    {
+        anim.SetBool("canWalk", true);
+
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("EnemyAttack"))
+        {
+            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
+
+            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
     }
 
     void Attack()
     {
-        //anim.SetTrigger("Attack");
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
-        target.gameObject.GetComponent<Player>().TakeDamage(damage);
-        Debug.Log("Hit Player");
+        timer = intTimer; //Reset Timer when Player enter Attack Range
+        attackMode = true; //To check if Enemy can still attack or not
+
+        anim.SetBool("canWalk", false);
+        anim.SetBool("Attack", true);
     }
-    
-    private void OnDrawGizmosSelected()
+
+    void Cooldown()
     {
-        if (attackPoint == null) return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        timer -= Time.deltaTime;
+
+        if(timer <= 0 && cooling && attackMode)
+        {
+            cooling = false;
+            timer = intTimer;
+        }
+    }
+
+    void StopAttack()
+    {
+        cooling = false;
+        attackMode = false;
+        anim.SetBool("Attack", false);
+    }
+
+    void RaycastDebugger()
+    {
+        if(distance > attackDistance)
+        {
+            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.red);
+        }
+        else if(attackDistance > distance)
+        {
+            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.green);
+        }
+    }
+
+    public void TriggerCooling()
+    {
+        cooling = true;
     }
 }
