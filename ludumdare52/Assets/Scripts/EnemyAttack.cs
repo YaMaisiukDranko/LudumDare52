@@ -1,55 +1,46 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public Animator anim;
-    public float speed;
-    public float stoppingDistance;
-    private Transform target;
-    
-    public float attackRate;
-    private float nextAttackTime;
-    public float attackRange;
-    public int damage;
+    public float attackDelay = 2.0f; // delay between attacks in seconds
+    public float attackDamage = 10.0f; // amount of damage dealt by each attack
 
-    public Transform attackPoint;
-    public LayerMask playerLayer;
+    private float attackTimer = 0.0f; // timer for counting down to next attack
+    private bool canAttack = false; // whether the enemy is able to attack
 
-
-    private void Start()
+    // Update is called once per frame
+    void Update()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-    }
+        attackTimer -= Time.deltaTime; // decrease attack timer
 
-    private void Update()
-    {
-        if (Vector2.Distance(transform.position, target.position) > stoppingDistance)
+        if (canAttack && attackTimer <= 0.0f) // if timer is up and enemy can attack
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        }
-
-        if (Time.time >= nextAttackTime)
-        {
-            Collider2D other = GetComponent<Collider2D>();
-            if (other.CompareTag("PlayerBorder"))
-            {
-                Attack();
-                nextAttackTime = Time.time + 2f / attackRate;
-            }
+            Attack(); // attack
+            attackTimer = attackDelay; // reset timer
         }
     }
 
     void Attack()
     {
-        //anim.SetTrigger("Attack");
-        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
-        target.gameObject.GetComponent<Player>().TakeDamage(damage);
-        Debug.Log("Hit Player");
+        Debug.Log("Attack");
     }
-    
-    private void OnDrawGizmosSelected()
+
+    // called when the enemy's collider enters a trigger collider
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (attackPoint == null) return;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        if (other.tag == "Player") // if the trigger collider is the player
+        {
+            canAttack = true; // enable attacking
+        }
+    }
+
+    // called when the enemy's collider exits a trigger collider
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player") // if the trigger collider is the player
+        {
+            canAttack = false; // disable attacking
+        }
     }
 }
