@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour
@@ -24,10 +25,13 @@ public class PlayerAttacks : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                rb.AddForce(new Vector2(5f, 0f));
                 Attack();
                 nextAttackTime = Time.time + 1f / attackRate;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.right * 10f, ForceMode2D.Impulse);
         }
     }
 
