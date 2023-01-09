@@ -5,7 +5,9 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackDelay = 2.0f; // delay between attacks in seconds
     public float attackDamage = 10.0f; // amount of damage dealt by each attack
+    //public int damage;
 
+    private Player _player;
     private float attackTimer = 0.0f; // timer for counting down to next attack
     private bool canAttack = false; // whether the enemy is able to attack
 
@@ -23,6 +25,8 @@ public class EnemyAttack : MonoBehaviour
 
     void Attack()
     {
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _player.TakeDamage(10);
         Debug.Log("Attack");
     }
 
